@@ -15,7 +15,9 @@ public class Login {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        LoginEmail window = new LoginEmail();
+        window.setVisible(true);
+        window.setLocationRelativeTo(null);
     }
     
 }
