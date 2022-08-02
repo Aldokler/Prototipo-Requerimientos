@@ -85,11 +85,6 @@ public class LoginSetPassword extends javax.swing.JFrame {
         jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(102, 153, 255));
         jCheckBox1.setText("Show Password");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
 
         jpass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jpass.setText("jPasswordField1");
@@ -179,10 +174,6 @@ public class LoginSetPassword extends javax.swing.JFrame {
         this.setVisible(false);
         window.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(jpass.getPassword().length < 1)
