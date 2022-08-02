@@ -33,14 +33,4 @@ public class Utilities {
         //returns the conversion from char[] to String;
         return passwordArray.toString();
     }
-    /*public static boolean verifyUser(String user, String password){
-        //verify that the user exist
-        users u = new users();
-        if(u.getUsers().contains(user) && u.getPassword().contains(password)){
-            if(u.getUsers().indexOf(user) == u.getPassword().indexOf(password))
-               return true;
-        }
-            
-        return false;
-    }*/
 }
