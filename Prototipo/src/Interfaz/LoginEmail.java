@@ -144,6 +144,7 @@ public class LoginEmail extends javax.swing.JFrame {
         else{
             LoginPassword window = new LoginPassword();
             window.setVisible(true);
+            window.setEmail(email.getText());
             this.setVisible(false);
             window.setLocationRelativeTo(null);
             this.dispose();

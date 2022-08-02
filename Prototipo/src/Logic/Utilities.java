@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Logic;
-
+import BD.users;
 /**
  *
  * @author Aldokler
@@ -28,5 +28,19 @@ public class Utilities {
             } 
         }
         return validaciones == 2 && email.charAt(email.length()-1)!='.' && email.charAt(email.length()-2)!='.';
+    }
+    public static String convertPassword(char[] passwordArray){
+        //returns the conversion from char[] to String;
+        return passwordArray.toString();
+    }
+    public static boolean verifyUser(String user, String password){
+        //verify that the user exist
+        users u = new users();
+        if(u.getUsers().contains(user) && u.getPassword().contains(u)){
+            if(u.getUsers().indexOf(user) == u.getPassword().indexOf(password))
+               return true;
+        }
+            
+        return false;
     }
 }
