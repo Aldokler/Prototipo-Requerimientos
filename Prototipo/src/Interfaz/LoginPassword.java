@@ -69,6 +69,11 @@ public class LoginPassword extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Next");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -168,14 +173,7 @@ public class LoginPassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        while(jpass.getPassword().length < 1){
-            JOptionPane.showMessageDialog(null, "Password is empty, try again");
-        }
-        String password = Utilities.convertPassword(jpass.getPassword());
-        if(Utilities.verifyUser(email,password))
-            JOptionPane.showMessageDialog(null, "Login Successful");
-        else
-            JOptionPane.showMessageDialog(null, "Your account or password is incorrect, please verify");
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -189,6 +187,17 @@ public class LoginPassword extends javax.swing.JFrame {
     private void jpassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpassMouseClicked
         jpass.setText("");
     }//GEN-LAST:event_jpassMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        //if(jpass.getPassword().length < 1){
+          //  JOptionPane.showMessageDialog(null, "Password is empty, try again");
+        //}
+        String password = Utilities.convertPassword(jpass.getPassword());
+        if(password == "123")
+            JOptionPane.showMessageDialog(null, "Login Successful");
+        else
+            JOptionPane.showMessageDialog(null, "Your account or password is incorrect, please verify");
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
