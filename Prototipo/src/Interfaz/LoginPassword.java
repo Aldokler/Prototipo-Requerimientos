@@ -96,11 +96,6 @@ public class LoginPassword extends javax.swing.JFrame {
 
         jpass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jpass.setText("jPasswordField1");
-        jpass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jpassMouseClicked(evt);
-            }
-        });
 
         jButton3.setText("🡨");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -174,19 +169,12 @@ public class LoginPassword extends javax.swing.JFrame {
         window.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jpassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpassMouseClicked
-        jpass.setText("");
-    }//GEN-LAST:event_jpassMouseClicked
-
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        //if(jpass.getPassword().length < 1){
-          //  JOptionPane.showMessageDialog(null, "Password is empty, try again");
-        //}
-        String password = Utilities.convertPassword(jpass.getPassword());
-        if(password == "123")
-            JOptionPane.showMessageDialog(null, "Login Successful");
-        else
+        String password = jpass.getText();
+        if(!password.equals("prueba"))
             JOptionPane.showMessageDialog(null, "Your account or password is incorrect, please verify");
+        else
+            JOptionPane.showMessageDialog(null, "Login Successful");
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**

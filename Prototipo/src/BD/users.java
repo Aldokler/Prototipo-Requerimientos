@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author jeffr
  */
 public class users {
+    //clase que se usaria para hacer la conexion y almacenar los usuarios
     ArrayList<String> users;
     ArrayList<String> password;
     public users() {

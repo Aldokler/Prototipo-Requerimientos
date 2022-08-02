@@ -31,6 +31,10 @@ public class Utilities {
     }
     public static String convertPassword(char[] passwordArray){
         //returns the conversion from char[] to String;
-        return passwordArray.toString();
+        String password = "";
+        for(int i =0;i<passwordArray.length;i++)
+            password+=passwordArray[i];
+        return password;
     }
+    
 }

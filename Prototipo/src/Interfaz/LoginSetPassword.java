@@ -17,10 +17,6 @@ public class LoginSetPassword extends javax.swing.JFrame {
      * Creates new form LoginEmail
      */
     String email;
-    public LoginSetPassword(String email) {
-        this.email = email;
-        initComponents();
-    }
     public LoginSetPassword() {
         initComponents();
     }

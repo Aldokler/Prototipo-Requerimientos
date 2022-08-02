@@ -163,10 +163,9 @@ public class LoginCreateAccount extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please enter a valid email", "Prototipo", 0);
         } 
         else {
-            LoginSetPassword passwordWindow = new LoginSetPassword(email.getText());
+            LoginSetPassword passwordWindow = new LoginSetPassword();
             passwordWindow.setVisible(true);
-            
-            
+            passwordWindow.setEmail(email.getText());
             this.setVisible(false);
             passwordWindow.setLocationRelativeTo(null);
             this.dispose();
