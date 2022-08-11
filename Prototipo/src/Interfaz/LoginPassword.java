@@ -93,6 +93,11 @@ public class LoginPassword extends javax.swing.JFrame {
         jButton2.setText("Forget your password?");
         jButton2.setBorder(null);
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jpass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jpass.setText("jPasswordField1");
@@ -176,6 +181,13 @@ public class LoginPassword extends javax.swing.JFrame {
         else
             JOptionPane.showMessageDialog(null, "Login Successful");
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        LoginSetPassword window = new LoginSetPassword();
+        window.setVisible(true);
+        this.setVisible(false);
+        window.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
