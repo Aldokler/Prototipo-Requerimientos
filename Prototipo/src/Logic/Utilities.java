@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Logic;
-import BD.users;
+import BD.funcionesUsuarios;
 /**
  *
  * @author Aldokler
