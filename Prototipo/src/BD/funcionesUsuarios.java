@@ -4,32 +4,81 @@
  */
 package BD;
 
-import java.util.ArrayList;
-
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
 /**
  *
  * @author jeffr
  */
 public class funcionesUsuarios {
     //clase que se usaria para hacer la conexion y almacenar los usuarios
-    ArrayList<String> users;
-    ArrayList<String> password;
-    public funcionesUsuarios() {
-    }
 
-    public ArrayList<String> getUsers() {
-        return users;
+    private String bdUser = "requeDBA";
+    private String bdPassword = "requePrototype";
+    private String url = "jdbc:mysql://localhost:3306/requerimientos";
+    Connection conn;
+    
+ public funcionesUsuarios() {
     }
-
-    public void setUsers(ArrayList<String> users) {
-        this.users = users;
+ public User findUser(String username){
+        User user = new User();
+        try {
+            conn = DriverManager.getConnection(url, bdUser, bdPassword);
+            CallableStatement stmt = conn.prepareCall("{call findUser(?)}");
+            stmt.setString(1, username);     
+            ResultSet rs =stmt.executeQuery();
+            rs.next();
+            user.setUsername(rs.getString("USERNAME"));
+            user.setPassword(rs.getString("password"));
+            stmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
     }
-
-    public ArrayList<String> getPassword() {
-        return password;
+ public void updateUser(String username, String password){
+        try {
+            conn = DriverManager.getConnection(url, bdUser, bdPassword);
+            CallableStatement stmt = conn.prepareCall("{call updateUser(?,?)}");
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            stmt.execute();
+            stmt.close();
+            System.out.println("successfull");
+        } catch (SQLException ex) {
+            Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
-    public void setPassword(ArrayList<String> password) {
-        this.password = password;
+ public void addUser(String username, String password){
+        try {
+            conn = DriverManager.getConnection(url, bdUser, bdPassword);
+            CallableStatement stmt = conn.prepareCall("{call addUser(?,?)}");
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            stmt.execute();
+            stmt.close();
+            System.out.println("successfull");
+        } catch (SQLException ex) {
+            Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    public void deleteUser(String username, String password){
+        try {
+            conn = DriverManager.getConnection(url, bdUser, bdPassword);
+            CallableStatement stmt = conn.prepareCall("{call deleteUser(?, ?)}");
+            stmt.setString(1, username);
+            stmt.setString(2, password);    
+            stmt.execute();
+            stmt.close();
+            System.out.println("successfull");
+        } catch (SQLException ex) {
+            Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+ 
 }
