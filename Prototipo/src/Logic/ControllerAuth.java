@@ -30,5 +30,4 @@ public class ControllerAuth {
     public void changeUserPassword(String username, String password){
         auth.updateUser(username, password);
     }
-    
 }
