@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package Interfaz;
+import Logic.ControllerAuth;
 import javax.swing.JOptionPane;
 import Logic.Utilities;
+import java.util.Arrays;
 
 /**
  *
@@ -16,6 +18,7 @@ public class LoginSetPassword extends javax.swing.JFrame {
     /**
      * Creates new form LoginEmail
      */
+    private ControllerAuth controller = new ControllerAuth();
     String email;
     public LoginSetPassword() {
         initComponents();
@@ -86,12 +89,22 @@ public class LoginSetPassword extends javax.swing.JFrame {
         jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(102, 153, 255));
         jCheckBox1.setText("Show Password");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         jpass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jpass.setText("jPasswordField1");
         jpass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpassMouseClicked(evt);
+            }
+        });
+        jpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpassActionPerformed(evt);
             }
         });
 
@@ -178,9 +191,22 @@ public class LoginSetPassword extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(jpass.getPassword().length < 1)
             JOptionPane.showMessageDialog(null, "Password cannot be empty");
-        else
-            JOptionPane.showMessageDialog(null, "Registration Successful");
+        else{
+            char[] arrayC = jpass.getPassword();
+            String password = new String(arrayC);
+            controller.createUser(email, password);
+            JOptionPane.showMessageDialog(null, "User craeted successfully");
+        }
+            
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpassActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments

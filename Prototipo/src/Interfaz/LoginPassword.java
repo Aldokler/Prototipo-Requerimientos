@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Logic.ControllerAuth;
 import javax.swing.JOptionPane;
 import Logic.Utilities;
 
@@ -14,6 +15,7 @@ import Logic.Utilities;
  */
 public class LoginPassword extends javax.swing.JFrame {
     
+    private ControllerAuth controller = new ControllerAuth();
     String email;
 
     /**
@@ -46,11 +48,11 @@ public class LoginPassword extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnForgotPass = new javax.swing.JButton();
         jpass = new javax.swing.JPasswordField();
-        jButton3 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         em = new javax.swing.JLabel();
 
         jLabel3.setText("🡨");
@@ -65,13 +67,18 @@ public class LoginPassword extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setText("Prototipo");
 
-        jButton1.setBackground(new java.awt.Color(51, 102, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Next");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnNext.setBackground(new java.awt.Color(51, 102, 255));
+        btnNext.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnNext.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext.setText("Next");
+        btnNext.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnNextMouseClicked(evt);
+            }
+        });
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
             }
         });
 
@@ -88,24 +95,24 @@ public class LoginPassword extends javax.swing.JFrame {
             .addGap(0, 4, Short.MAX_VALUE)
         );
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(102, 153, 255));
-        jButton2.setText("Forget your password?");
-        jButton2.setBorder(null);
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnForgotPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnForgotPass.setForeground(new java.awt.Color(102, 153, 255));
+        btnForgotPass.setText("Forget your password?");
+        btnForgotPass.setBorder(null);
+        btnForgotPass.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnForgotPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnForgotPassActionPerformed(evt);
             }
         });
 
         jpass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jpass.setText("jPasswordField1");
 
-        jButton3.setText("🡨");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("🡨");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -117,15 +124,15 @@ public class LoginPassword extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(btnBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(em, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jpass)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnForgotPass, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNext, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -136,7 +143,7 @@ public class LoginPassword extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(em, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -147,9 +154,9 @@ public class LoginPassword extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnForgotPass, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68))
         );
 
@@ -167,27 +174,33 @@ public class LoginPassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         LoginEmail window = new LoginEmail();
         window.setVisible(true);
         this.setVisible(false);
         window.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String password = jpass.getText();
-        if(!password.equals("prueba"))
-            JOptionPane.showMessageDialog(null, "Your account or password is incorrect, please verify");
-        else
-            JOptionPane.showMessageDialog(null, "Login Successful");
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void btnNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnNextMouseClicked
+
+    private void btnForgotPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgotPassActionPerformed
         LoginSetPassword window = new LoginSetPassword();
         window.setVisible(true);
         this.setVisible(false);
         window.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnForgotPassActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        char[] arrayC = jpass.getPassword();
+        String password = new String(arrayC);
+        
+        if(controller.validateCredentials(email, password))
+            JOptionPane.showMessageDialog(null, "Login Successful");
+        else
+            JOptionPane.showMessageDialog(null, "Your account or password is incorrect, please verify");
+    }//GEN-LAST:event_btnNextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,10 +239,10 @@ public class LoginPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnForgotPass;
+    private javax.swing.JButton btnNext;
     private javax.swing.JLabel em;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

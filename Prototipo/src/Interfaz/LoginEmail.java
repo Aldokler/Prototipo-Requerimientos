@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Logic.ControllerAuth;
 import javax.swing.JOptionPane;
 import Logic.Utilities;
 
@@ -17,6 +18,8 @@ public class LoginEmail extends javax.swing.JFrame {
     /**
      * Creates new form LoginEmail
      */
+    private ControllerAuth controller = new ControllerAuth();
+    
     public LoginEmail() {
         initComponents();
     }
@@ -142,12 +145,17 @@ public class LoginEmail extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please enter a valid email", "Prototipo", 0);
         }
         else{
-            LoginPassword window = new LoginPassword();
-            window.setVisible(true);
-            window.setEmail(email.getText());
-            this.setVisible(false);
-            window.setLocationRelativeTo(null);
-            this.dispose();
+            if (!controller.findUserExists(email.getText()))
+                JOptionPane.showMessageDialog(null, "This user doesn't exist", "Prototipo", 0);
+            else{
+                LoginPassword window = new LoginPassword();
+                window.setVisible(true);
+                window.setEmail(email.getText());
+                this.setVisible(false);
+                window.setLocationRelativeTo(null);
+                this.dispose();
+            }
+            
         }
     }//GEN-LAST:event_nextButtonActionPerformed
 

@@ -5,7 +5,9 @@
  */
 package Interfaz;
 
+import BD.User;
 import BD.funcionesUsuarios;
+import Logic.ControllerAuth;
 
 /**
  *
@@ -17,11 +19,10 @@ public class Login {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        funcionesUsuarios f = new funcionesUsuarios();
-        f.addUser("pruebaxd@gmail.com", "aaadddfff");
         LoginEmail window = new LoginEmail();
         window.setVisible(true);
         window.setLocationRelativeTo(null);
+                
     }
     
 }
