@@ -20,9 +20,10 @@ public class Login {
      */
     public static void main(String[] args) {
         LoginEmail window = new LoginEmail();
+        funcionesUsuarios f = new funcionesUsuarios();
+        f.getUsers();
         window.setVisible(true);
-        window.setLocationRelativeTo(null);
-                
+        window.setLocationRelativeTo(null);         
     }
     
 }

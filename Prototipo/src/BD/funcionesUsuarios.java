@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 /**
  *
  * @author jeffr
@@ -80,5 +81,19 @@ public class funcionesUsuarios {
             Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
- 
+    public ArrayList<String> getUsers(){
+        ArrayList<String> users = new ArrayList<String>();
+        try {
+            conn = DriverManager.getConnection(url, bdUser, bdPassword);
+            CallableStatement stmt = conn.prepareCall("{call getUsers()}");  
+            ResultSet rs =stmt.executeQuery();
+            while(rs.next()){
+                users.add(rs.getString("username"));
+            }
+            stmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return users;
+    }
 }
