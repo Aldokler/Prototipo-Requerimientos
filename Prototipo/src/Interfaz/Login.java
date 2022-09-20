@@ -8,6 +8,7 @@ package Interfaz;
 import BD.User;
 import BD.funcionesUsuarios;
 import Logic.ControllerAuth;
+import Logic.merge;
 
 /**
  *
@@ -21,12 +22,13 @@ public class Login {
     public static void main(String[] args) {
         LoginEmail window = new LoginEmail();
         funcionesUsuarios f = new funcionesUsuarios();
-        f.getUsers();
-        
-        for(int i = 10000;i<100000;i++){
-          String user = "usuario-"+ i;
-            String password = "prueba" + i;
-            f.addUser(user, password);
+        String[] users = f.getUsers();
+        for (String user : users) {
+            System.out.println(user);
+        }
+        merge.mergeSort(users, 0, users.length-1);
+        for (String user : users) {
+            System.out.println(user);
         }
         window.setVisible(true);
         window.setLocationRelativeTo(null);         

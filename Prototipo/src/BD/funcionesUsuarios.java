@@ -78,7 +78,7 @@ public class funcionesUsuarios {
             Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public ArrayList<String> getUsers(){
+    public String[] getUsers(){
         ArrayList<String> users = new ArrayList<String>();
         try {
             conn = DriverManager.getConnection(url, bdUser, bdPassword);
@@ -91,6 +91,10 @@ public class funcionesUsuarios {
         } catch (SQLException ex) {
             Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return users;
+        String[] usuarios = new String[users.size()];
+        for (int i = 0; i < users.size(); i++){
+            usuarios[i] = users.get(i);
+        }
+        return usuarios;
     }
 }
