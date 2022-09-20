@@ -8,6 +8,7 @@ package Interfaz;
 import Logic.ControllerAuth;
 import javax.swing.JOptionPane;
 import Logic.Utilities;
+import java.util.Date;
 
 /**
  *
@@ -145,7 +146,40 @@ public class LoginEmail extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please enter a valid email", "Prototipo", 0);
         }
         else{
-            if (!controller.findUserExists(email.getText()))
+            Date timeS = new Date();
+            Long start = timeS.getTime();
+            boolean linear = controller.findUserExistsL(email.getText());
+            Date timeF = new Date();
+            Long finish = timeF.getTime();
+            long linearTime = finish - start;
+            
+            
+            timeS = new Date();
+            start = timeS.getTime();
+            boolean binary = controller.findUserExistsB(email.getText());
+            timeF = new Date();
+            finish = timeF.getTime();
+            long binaryTime = finish - start;
+            
+            timeS = new Date();
+            start = timeS.getTime();
+            boolean select = controller.findUserExists(email.getText());
+            timeF = new Date();
+            finish = timeF.getTime();
+            long selectTime = finish - start;
+            
+            System.out.println("L: " + linearTime);
+            System.out.println("B: " + binaryTime);
+            System.out.println("S: " + selectTime);
+            
+            Datos data = new Datos(linearTime, binaryTime, selectTime);
+            data.setVisible(true);
+            //this.setVisible(true);
+            //data.setLocationRelativeTo(null);
+            //this.dispose();
+        
+            
+            if (!linear & !binary & !select)
                 JOptionPane.showMessageDialog(null, "This user doesn't exist", "Prototipo", 0);
             else{
                 LoginPassword window = new LoginPassword();

@@ -7,6 +7,7 @@ package Interfaz;
 
 import Logic.ControllerAuth;
 import Logic.Utilities;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -127,8 +128,8 @@ public class LoginCreateAccount extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,7 +181,37 @@ public class LoginCreateAccount extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please enter a valid email", "Prototipo", 0);
         } 
         else {
-            if (controller.findUserExists(email.getText()))
+            Date timeS = new Date();
+            Long start = timeS.getTime();
+            boolean linear = controller.findUserExistsL(email.getText());
+            Date timeF = new Date();
+            Long finish = timeF.getTime();
+            long linearTime = finish - start;
+            
+            
+            timeS = new Date();
+            start = timeS.getTime();
+            boolean binary = controller.findUserExistsB(email.getText());
+            timeF = new Date();
+            finish = timeF.getTime();
+            long binaryTime = finish - start;
+            
+            timeS = new Date();
+            start = timeS.getTime();
+            boolean select = controller.findUserExists(email.getText());
+            timeF = new Date();
+            finish = timeF.getTime();
+            long selectTime = finish - start;
+            
+            System.out.println("L: " + linearTime);
+            System.out.println("B: " + binaryTime);
+            System.out.println("S: " + selectTime);
+            
+            Datos data = new Datos(linearTime, binaryTime, selectTime);
+            data.setVisible(true);
+           
+            
+            if (linear & binary & select)
                 JOptionPane.showMessageDialog(null, "Email already exists", "Prototipo", 0);
             else{
                 LoginSetPassword passwordWindow = new LoginSetPassword();

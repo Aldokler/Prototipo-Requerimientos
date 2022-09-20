@@ -22,18 +22,70 @@ public class Login {
      * @param args the command line arguments
      */
     public static String getUsuario(String[] usuarios, String usuarioBuscar){
-        String usuario = "";
+        String usuario = "null";
         for(int i =0;i<usuarios.length;i++){
-            if(usuarios[i] ==usuarioBuscar){
+            //System.out.println(usuarios[i]);
+            if(usuarios[i].equals(usuarioBuscar)){
                 usuario = usuarios[i];
                 break;
             }
         }
         return usuario;
     }
+    
+   
+    
     public static void main(String[] args) {
+       /* LoginEmail window = new LoginEmail();
+        window.setVisible(true);
+        window.setLocationRelativeTo(null);
+        */
+       /*
+       for (int i = 0; i < 2000; i++) {
+            funcionesUsuarios f = new funcionesUsuarios();
+            f.addUser("nombre" + i, "pass"+ "i");
+        }
+       
+       for (int i = 0; i < 3000; i++) {
+            funcionesUsuarios f = new funcionesUsuarios();
+            f.addUser("lolo" + i, "pass"+ "i");
+        }
+       
+       for (int i = 0; i < 2000; i++) {
+            funcionesUsuarios f = new funcionesUsuarios();
+            f.addUser("aitb" + i +"@gmail.com", "pass"+ "i");
+        }
+        */
+        
+       
+        funcionesUsuarios f = new funcionesUsuarios();
+        String[] users = f.getUsers();
+        merge.mergeSort(users, 0, users.length-1);
+        
+        
         Date t = new Date();
         Long X =t.getTime();
+        System.out.println(f.findUser("nombre1"));
+        //System.out.println(getUsuario(users, "name"));
+        //System.out.println(Arrays.binarySearch(users, "nombre1"));
+        Date t2 = new Date();
+        Long Y =t2.getTime();
+        System.out.println(X);
+        System.out.println(Y);
+        System.out.println((Y-X));
+
+
+       /* for (String user : users) {
+            System.out.println(user);
+        }   */     
+        /*
+        for (int i = 0; i < 10000; i++) {
+            funcionesUsuarios f = new funcionesUsuarios();
+            f.addUser("user" + i, "pass"+ "i");
+        }
+        
+       
+        
         LoginEmail window = new LoginEmail();
         funcionesUsuarios f = new funcionesUsuarios();
         //String[] users = f.getUsers();
@@ -47,12 +99,12 @@ public class Login {
         //}
         System.out.println(f.findUser("usuario-56642"));
         //System.out.println(getUsuario(users, "usuario-1"));
-        //System.out.println(Arrays.binarySearch(users, "usuario-65"));
+        //
         Date t2 = new Date();
         Long Y =t2.getTime();
         System.out.println((Y-X));
         window.setVisible(true);
-        window.setLocationRelativeTo(null);         
+        window.setLocationRelativeTo(null);         */
     }
     
 }

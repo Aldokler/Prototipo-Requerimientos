@@ -10,9 +10,13 @@ package Logic;
  */
 public class ControllerAuth {
     private Auth auth;
+    private SearchAlg algorit;
+    private String[] users;
 
     public ControllerAuth() {
         auth = new Auth();
+        algorit = new SearchAlg();
+        users = getUsers();
     }
     
     public boolean findUserExists(String username){
@@ -30,4 +34,19 @@ public class ControllerAuth {
     public void changeUserPassword(String username, String password){
         auth.updateUser(username, password);
     }
+    
+    private String[] getUsers(){
+        return algorit.getUsers();
+    }
+    
+    public boolean findUserExistsL(String username){
+        System.out.println("tamaño" + users.length);
+        return algorit.linearSearch(users, username);
+    }
+    
+    public boolean findUserExistsB(String username){
+        return algorit.binarySearch(users, username);
+    }
+    
+    
 }
