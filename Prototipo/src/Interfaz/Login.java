@@ -36,10 +36,10 @@ public class Login {
    
     
     public static void main(String[] args) {
-       /* LoginEmail window = new LoginEmail();
+       LoginEmail window = new LoginEmail();
         window.setVisible(true);
         window.setLocationRelativeTo(null);
-        */
+        
        /*
        for (int i = 0; i < 2000; i++) {
             funcionesUsuarios f = new funcionesUsuarios();
@@ -65,9 +65,9 @@ public class Login {
         
         Date t = new Date();
         Long X =t.getTime();
-        System.out.println(f.findUser("nombre1"));
+        System.out.println(f.findUser("usuario-55456"));
         //System.out.println(getUsuario(users, "name"));
-        //System.out.println(Arrays.binarySearch(users, "nombre1"));
+        //System.out.println(Arrays.binarySearch(users, "usuario-5546"));
         Date t2 = new Date();
         Long Y =t2.getTime();
         System.out.println(X);
