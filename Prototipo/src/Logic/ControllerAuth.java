@@ -31,5 +31,4 @@ public class ControllerAuth {
         auth.updateUser(username, password);
     }
     
-    
 }

@@ -46,7 +46,4 @@ public class Auth {
     public void updateUser(String suername, String password){
         dataBase.updateUser(suername, password);
     }
- 
-    
-    
 }

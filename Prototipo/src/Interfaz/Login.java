@@ -22,6 +22,11 @@ public class Login {
         LoginEmail window = new LoginEmail();
         funcionesUsuarios f = new funcionesUsuarios();
         f.getUsers();
+        for(int i = 0;i<1000;i++){
+            String user = "usuario-"+ i;
+            String password = "prueba" + i;
+            f.addUser(user, password);
+        }
         window.setVisible(true);
         window.setLocationRelativeTo(null);         
     }

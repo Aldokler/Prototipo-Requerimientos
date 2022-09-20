@@ -50,7 +50,6 @@ public class funcionesUsuarios {
             stmt.setString(2, password);
             stmt.execute();
             stmt.close();
-            System.out.println("successfull");
         } catch (SQLException ex) {
             Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -63,7 +62,6 @@ public class funcionesUsuarios {
             stmt.setString(2, password);
             stmt.execute();
             stmt.close();
-            System.out.println("successfull");
         } catch (SQLException ex) {
             Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -76,7 +74,6 @@ public class funcionesUsuarios {
             stmt.setString(2, password);    
             stmt.execute();
             stmt.close();
-            System.out.println("successfull");
         } catch (SQLException ex) {
             Logger.getLogger(funcionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
